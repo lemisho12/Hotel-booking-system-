@@ -172,7 +172,6 @@ string inputDate(const string& msg, const string& referenceDate = "") {
     strftime(buffer, sizeof(buffer), "%d/%m/%Y", &currentDateTm);
     string currentDateStr(buffer);
 
-
 while (true) {
         cout << msg;
         if (referenceDate.empty()) {
@@ -237,6 +236,16 @@ void loadCustomersFromFile() {
 
 // Display available rooms
 void displayAvailableRooms() {
+cout << "\nAvailable Rooms:\n";
+    bool found = false;
+    for (int i = 1; i <= ROOM_COUNT; ++i) {
+        if (!rooms[i]) {
+            cout << "- Room " << i << "\n";
+            found = true;
+        }
+    }
+    if (!found) cout << "No rooms available.\n";
+
 
 
 }
@@ -278,7 +287,7 @@ int main() {
     loadCustomersFromFile();
 
     while (true) {
-        cout << "\nHotel Booking Menu:\n";
+        cout << "\nHotel Management Menu:\n";
         cout << "1. Display Available Rooms\n";
         cout << "2. Book Room\n";
         cout << "3. Display Booked Rooms\n";
