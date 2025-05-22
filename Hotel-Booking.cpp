@@ -279,6 +279,26 @@ void searchCustomer() {
 }
 // Sort customers by ID (swaps data, not nodes)
 void sortCustomers() {
+    if (!head || !head->next) return;
+
+    // This is a bubble sort, swapping content. For a true linked list sort,
+    // you would typically re-arrange pointers, which is more complex.
+    // For small lists, swapping content is acceptable.
+    for (Customer* i = head; i != nullptr; i = i->next) {
+        for (Customer* j = i->next; j != nullptr; j = j->next) {
+            if (i->id > j->id) {
+                // Swap all members except 'next'
+                swap(i->id, j->id);
+                swap(i->name, j->name);
+                swap(i->phone, j->phone);
+                swap(i->roomNumber, j->roomNumber);
+                swap(i->checkIn, j->checkIn);
+                swap(i->checkOut, j->checkOut);
+                swap(i->stayDays, j->stayDays);
+                swap(i->totalBill, j->totalBill);
+            }
+        }
+    }
 
 
 }
